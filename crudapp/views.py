@@ -38,6 +38,7 @@ def update(request, blog_id):
         if form.is_valid():
             blog.title = request.POST['title']
             blog.body = request.POST['body']
+            blog.images = request.FILES['images']
             blog.pub_date = timezone.datetime.now()
             blog.save()
             return redirect('/crudapp/detail/' + str(blog.id))
